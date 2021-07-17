@@ -1,6 +1,6 @@
 ARG repo=registry.cn-hangzhou.aliyuncs.com/hextec/ubuntu-16.04
 ARG tag=1.0.420210623-RELEASE
-ARG arch=x86_64
+ARG arch=arm64
 
 FROM ${repo}:${tag}-${arch} AS build
 
@@ -33,4 +33,3 @@ COPY --from=build /app/workspace/bin/ffplay /usr/bin/ffplay
 RUN ldd /usr/bin/ffmpeg
 RUN ldd /usr/bin/ffprobe
 RUN ldd /usr/bin/ffplay
-
