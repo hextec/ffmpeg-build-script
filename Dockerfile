@@ -1,5 +1,5 @@
 ARG repo=registry.cn-hangzhou.aliyuncs.com/hextec/ubuntu-16.04
-ARG tag=1.0.420210623-RELEASE
+ARG tag=1.0.920210821-RELEASE
 ARG arch=x86_64
 
 FROM ${repo}:${tag}-${arch} AS build
@@ -7,14 +7,14 @@ FROM ${repo}:${tag}-${arch} AS build
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install build-essential curl ca-certificates python \
+    && apt-get -y --no-install-recommends install build-essential wget curl ca-certificates python \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* \
     && update-ca-certificates
 
 WORKDIR /app
 COPY ./build-ffmpeg /app/build-ffmpeg
 
-RUN SKIPINSTALL=yes /app/build-ffmpeg --build
+RUN SKIPINSTALL=yes /app/build-ffmpeg --build --enable-gpl-and-non-free
 
 FROM ${repo}:${tag}-${arch}
 
