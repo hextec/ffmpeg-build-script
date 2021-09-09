@@ -1,5 +1,5 @@
-ARG repo=registry.cn-hangzhou.aliyuncs.com/hextec/ubuntu-16.04
-ARG tag=1.0.420210623-RELEASE
+ARG repo=registry.cn-hangzhou.aliyuncs.com/hextec/ubuntu-18.04
+ARG tag=1.1.020210909-RELEASE
 ARG arch=arm64
 
 FROM ${repo}:${tag}-${arch} AS build

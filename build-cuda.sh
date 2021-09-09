@@ -1,0 +1,1 @@
+sudo docker build --build-arg HTTP_PROXY=http://192.168.2.216:7890 --build-arg HTTPS_PROXY=http://192.168.2.216:7890  --tag=hextec/media-ffmpeg:1.0.820210909-RELEASE-x86_64-cuda --output type=local,dest=build -f cuda-ubuntu.dockerfile .

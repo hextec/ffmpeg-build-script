@@ -1,6 +1,4 @@
-ARG VER=18.04
-
-FROM nvidia/cuda:11.1-devel-ubuntu${VER} AS build
+FROM nvidia/cuda:11.1-devel-ubuntu18.04 AS build
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV NVIDIA_VISIBLE_DEVICES all
@@ -31,9 +29,9 @@ COPY ./build-ffmpeg /app/build-ffmpeg
 RUN SKIPINSTALL=yes /app/build-ffmpeg --build --enable-gpl-and-non-free
 
 
-FROM ubuntu:${VER}
 
-ENV DEBIAN_FRONTEND noninteractive
+FROM registry.cn-hangzhou.aliyuncs.com/hextec/ubuntu-18.04:1.1.020210909-RELEASE-x86_64
+
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility,video
 
